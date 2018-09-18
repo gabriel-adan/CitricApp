@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="tomato">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Analítico</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Número de Lote</ion-label>
+        <ion-select [(ngModel)]="lote.Lote" okText="Aceptar" cancelText="Cancelar">
+          <ion-option value="{{lote.Lote}}" *ngFor="let lote of lotes">{{lote.Lote + ' ' + lote.Code}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button color="light" round (click)="clear($event)">Limpiar</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button round icon-start (click)="generate($event)" [disabled]="!canExecute || lote.Lote === ''">
+            <ion-icon ios="ios-send" md="md-send"></ion-icon>
+            Generar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-list>
+    <button ion-item text-wrap *ngFor="let file of files" (click)="open($event, file)">
+      <h2>{{file.name}}</h2>
+      <p>{{file.modificationTime | date}}</p>
+      <ion-badge color="primary">{{file.size | fileSizeFormat}}</ion-badge>
+      <p>{{file.path}}</p>
+    </button>
+  </ion-list>
+</ion-content>
