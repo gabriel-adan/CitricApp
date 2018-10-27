@@ -19,6 +19,22 @@ import { FileService } from '../services/file.service';
 import { File } from '@ionic-native/file';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { Http } from '@angular/http';
+import { LoginPage } from '../pages/login/login';
+
+let storage = new StoreService();
+
+export function getAuthHttp(http) {
+  return new AuthHttp(new AuthConfig({
+    tokenName: 'access_token',
+    headerPrefix: 'Bearer',
+    noJwtError: true,
+    globalHeaders: [{'Accept': 'application/json'}],
+    tokenGetter: (() => storage.getToken()),
+  }), http);
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,6 +42,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     ListPage,
     AnalyticPage,
     ReportListPage,
+    LoginPage,
     FileSizeFormatPipe
   ],
   imports: [
@@ -40,13 +57,19 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     HomePage,
     ListPage,
     AnalyticPage,
-    ReportListPage
+    ReportListPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HttpService, StoreService, FileTransfer, FileService, File, DocumentViewer
+    HttpService, StoreService, FileTransfer, FileService, File, DocumentViewer,
+    {
+      provide: AuthHttp,
+      useFactory: getAuthHttp,
+      deps: [Http]
+    }
   ]
 })
 export class AppModule {}

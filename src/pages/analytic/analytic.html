@@ -11,10 +11,12 @@
   <div padding>
     <ion-list>
       <ion-item>
-        <ion-label stacked>Número de Lote</ion-label>
+        <!-- <ion-label stacked>Número de Lote</ion-label>
         <ion-select [(ngModel)]="lote.Lote" okText="Aceptar" cancelText="Cancelar">
           <ion-option value="{{lote.Lote}}" *ngFor="let lote of lotes">{{lote.Lote + ' ' + lote.Code}}</ion-option>
-        </ion-select>
+        </ion-select> -->
+        <ion-label floating>Número de Lote</ion-label>
+        <ion-input type="number" [(ngModel)]="lote.Lote" clearInput="true"></ion-input>
       </ion-item>
       <ion-item>
         
@@ -26,7 +28,7 @@
           <button ion-button color="light" round (click)="clear($event)">Limpiar</button>
         </ion-col>
         <ion-col col-6>
-          <button ion-button round icon-start (click)="generate($event)" [disabled]="!canExecute || lote.Lote === ''">
+          <button ion-button round icon-start (click)="generate($event)" [disabled]="lote.Lote === ''">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>
             Generar
           </button>

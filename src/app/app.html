@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu id="authenticated" [content]="content">
   <ion-header>
     <ion-toolbar color="secondary">
       <ion-title>Menu</ion-title>
@@ -7,13 +7,53 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}"></ion-icon>
-        {{p.title}}
+      <button menuClose ion-item (click)="openHome($event)">
+        <ion-icon name="md-home"></ion-icon>
+        Inicio
+      </button>
+      <button menuClose ion-item (click)="openReportList($event)">
+        <ion-icon name="logo-buffer"></ion-icon>
+        Listado de Existencia
+      </button>
+      <button menuClose ion-item (click)="openAnalytic($event)">
+        <ion-icon name="md-document"></ion-icon>
+        Generar Analítico
+      </button>
+      <button menuClose ion-item (click)="openConfiguration($event)">
+        <ion-icon name="md-settings"></ion-icon>
+        Configuración
+      </button>
+      <button menuClose ion-item (click)="closeSesion($event)">
+        <ion-icon name="md-power"></ion-icon>
+        Cerrar Sesion
       </button>
     </ion-list>
   </ion-content>
+</ion-menu>
 
+<ion-menu id="unauthenticated" [content]="content">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item (click)="openHome($event)">
+        <ion-icon name="md-home"></ion-icon>
+        Inicio
+      </button>
+      <button menuClose ion-item (click)="openConfiguration($event)">
+        <ion-icon name="md-settings"></ion-icon>
+        Configuración
+      </button>
+      <button menuClose ion-item (click)="openLoginPage($event)">
+        <ion-icon name="md-contact"></ion-icon>
+        Iniciar Sesion
+      </button>
+    </ion-list>
+  </ion-content>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

@@ -11,20 +11,20 @@ import { FileService, EFileTypeService } from '../../services/file.service';
 })
 export class AnalyticPage {
 
-    public lotes: Array<Lote> = [];
+    // public lotes: Array<Lote> = [];
     public lote: Lote = new Lote();
     public files: FileDataDetail[] = [];
-    public canExecute: boolean = false;
+    // public canExecute: boolean = false;
 
     constructor(private loadingCtrl: LoadingController, private alertCtrl: AlertController, private httpService: HttpService, private fileService: FileService) {
         this.fileService.createDirectoryIfNotExist('coa');
     }
 
     ionViewDidLoad() {
-        this.httpService.getLotes().subscribe((lotes: Array<Lote>) => {
-            this.lotes = lotes;
-            this.canExecute = true;
-        });
+        // this.httpService.getLotes().subscribe((lotes: Array<Lote>) => {
+        //     this.lotes = lotes;
+        //     this.canExecute = true;
+        // });
         
         this.fileService.getFileList('coa').then((files: FileDataDetail[]) => {
             this.files = files;

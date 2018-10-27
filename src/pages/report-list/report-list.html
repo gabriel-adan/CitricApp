@@ -10,35 +10,39 @@
   <div padding>
     <ion-list>
       <ion-item>
-        <ion-label stacked>Desde Número de Lote</ion-label>
+        <!-- <ion-label stacked>Desde Número de Lote</ion-label>
         <ion-select [(ngModel)]="model.fromLote" okText="Aceptar" cancelText="Cancelar">
           <ion-option value="{{lote.Lote}}" *ngFor="let lote of lotes">{{lote.Lote + ' ' + lote.Code}}</ion-option>
-        </ion-select>
+        </ion-select> -->
+        <ion-label floating>Lote Inicial</ion-label>
+        <ion-input type="number" [(ngModel)]="model.fromLote" clearInput="true"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label stacked>Hasta Número de Lote</ion-label>
+        <!-- <ion-label stacked>Hasta Número de Lote</ion-label>
         <ion-select [(ngModel)]="model.toLote" okText="Aceptar" cancelText="Cancelar">
           <ion-option value="{{lote.Lote}}" *ngFor="let lote of lotes">{{lote.Lote + ' ' + lote.Code}}</ion-option>
-        </ion-select>
+        </ion-select> -->
+        <ion-label floating>Lote Final</ion-label>
+        <ion-input type="number" [(ngModel)]="model.toLote" clearInput="true"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label stacked>Desde Número de Depósito</ion-label>
+        <ion-label stacked>Depósito Inicial</ion-label>
         <ion-select [(ngModel)]="model.fromDeposit" okText="Aceptar" cancelText="Cancelar">
           <ion-option value="{{deposit.Code}}" *ngFor="let deposit of deposits">{{deposit.Code}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label stacked>Hasta Número de Depósito</ion-label>
+        <ion-label stacked>Depósito Final</ion-label>
         <ion-select [(ngModel)]="model.toDeposit" okText="Aceptar" cancelText="Cancelar">
           <ion-option value="{{deposit.Code}}" *ngFor="let deposit of deposits">{{deposit.Code}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>Desde Fecha</ion-label>
+        <ion-label>Fecha Inicial</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="model.fromDate" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label>Hasta Fecha</ion-label>
+        <ion-label>Fecha Final</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="model.toDate" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
       </ion-item>
     </ion-list>

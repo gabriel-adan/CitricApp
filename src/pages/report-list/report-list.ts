@@ -13,7 +13,7 @@ import { FileDataDetail } from '../../model/file.data.detail';
 })
 export class ReportListPage {
 
-    public lotes: Array<Lote> = [];
+    // public lotes: Array<Lote> = [];
     public model: ReportListModel = new ReportListModel();
     public files: FileDataDetail[] = [];
     public deposits = [];
@@ -23,9 +23,9 @@ export class ReportListPage {
     }
 
     ionViewDidLoad() {
-        this.httpService.getLotes().subscribe((lotes: Array<Lote>) => {
-            this.lotes = lotes;
-        });
+        // this.httpService.getLotes().subscribe((lotes: Array<Lote>) => {
+        //     this.lotes = lotes;
+        // });
         
         this.httpService.getDeposits().subscribe((deposits: Array<Deposit>) => {
             this.deposits = deposits;
@@ -41,7 +41,6 @@ export class ReportListPage {
     }
 
     public generate(evt: Event) {
-        console.log(this.model);
         const loading = this.loadingCtrl.create({
             content: "Generando el archivo"
         });
